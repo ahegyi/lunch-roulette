@@ -11,7 +11,10 @@ class LunchRoulette
       @start_date = hash['start_date']
       @features['days_here'] = (Date.today - Date.strptime(@start_date, '%m/%d/%Y')).to_i
       @features['team'] = config.team_mappings[@team].to_i
-      @features['specialty'] = config.specialty_mappings[@specialty].to_i
+      # only use specialty if mappings are given
+      if config.specialty_mappings
+        @features['specialty'] = config.specialty_mappings[@specialty].to_i
+      end
       @name = hash['name']
       @previous_lunches = []
       if hash['previous_lunches']
