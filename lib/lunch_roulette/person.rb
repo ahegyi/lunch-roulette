@@ -44,7 +44,7 @@ class LunchRoulette
     end
 
     def inspect
-      "#{name} (#{team}#{location ? " - #{location}" : ""}#{specialty ? " - #{specialty}" : ""})"
+      name
     end
 
     def config

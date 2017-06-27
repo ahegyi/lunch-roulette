@@ -24,7 +24,7 @@ class LunchRoulette
     end
 
     def inspect
-      @people.map{|p| p.inspect }.join(", ")
+      @people.map{|p| p.inspect }.join("\n")
     end
 
     def emails
