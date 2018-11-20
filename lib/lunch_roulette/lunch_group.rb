@@ -42,8 +42,17 @@ class LunchRoulette
         s = @people.map do |person|
           person.features[feature] / config.maxes[feature].to_f
         end.standard_deviation
-        [feature, s * config.weights[feature]]
+
+        score = s * config.weights[feature]
+
+        # when there are no team mappings, sometimes we get an nan
+        if score.respond_to?(:nan?) && score.nan?
+          score = 0
+        end
+
+        [feature, score]
       end
+
       @scores = Hash[*h.flatten]
     end
 
